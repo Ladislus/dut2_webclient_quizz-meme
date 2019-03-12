@@ -10,6 +10,7 @@ Ladislas WALCAK
 
 A la racine, exécuter :
 yarn add json-server
+yarn add jquery
 
 Pour lancer le server :
 yarn exec json-server meme.json
