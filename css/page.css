@@ -1,0 +1,44 @@
+html, body{
+  height: 100%;
+  background: #6da0c4;
+}
+
+header{
+  display: block;
+  text-align: center;
+  background: #efac47;
+  font-family: "URW Chancery L";
+  font-size: 25px;
+}
+
+.button{
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #99948c;
+  width: 50%;
+}
+
+#corps{
+  background-color: #00ff00;
+}
+
+nav{
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+}
+
+section{
+}
+
+header, #corps{
+  border-radius: 10px;
+  margin: 3px;
+  padding: 0px;
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
