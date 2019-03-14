@@ -1,3 +1,51 @@
 {
-  
+  "memes": [
+    {
+      "id": 0,
+      "title": "Doge",
+      "description": "Doge is a slang term for \"dog\" that is primarily associated with pictures of Shiba Inus.",
+      "year": "June 24th, 2005",
+      "img_link":"https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"
+    },
+    {
+      "id": 1,
+      "title": "Nyan Cat",
+      "description": "Nyan Cat, also known as Pop Tart Cat, is an 8-bit animation depicting a cat with the body of a cherry Pop-Tart flying through outer space.",
+      "year": "April 2nd, 2011",
+      "img_link":"https://i.kym-cdn.com/entries/icons/mobile/000/005/608/nyan-cat-01-625x450.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Awkward Moment Seal",
+      "description": "Awkward Moment Seal is an advice animal image macro series featuring a seal with a wide-eyed expression and captions describing socially awkward or uncomfortable situations.",
+      "year": "April 15th, 2014",
+      "img_link":"https://i.kym-cdn.com/entries/icons/mobile/000/015/378/lttujcv.jpg"
+    }
+  ],
+  "players": [
+    {
+      "id": 0,
+      "username": "player",
+      "high_score": 0
+    },
+    {
+      "id": 1,
+      "username": "meme_lord",
+      "high_score": 99
+    }
+  ],
+  "questions": [
+    {
+      "id": 0,
+      "type": "img_qu",
+      "entitled": "Quel est le meme au chat multicolore ?",
+      "id_rep": 1
+    },
+    {
+      "id": 1,
+      "type": "string_qu",
+      "entitled": "Quel est la race de chien du meme doge ?",
+      "id_rep": "Shiba Inu"
+    }
+  ]
 }
