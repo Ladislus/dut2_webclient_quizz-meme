@@ -5,3 +5,11 @@ Membre :
 Alexis DUPRE
 Adrien FOUCAULT
 Ladislas WALCAK
+
+#INSTALLATION
+
+A la racine, exécuter :
+yarn add json-server
+
+Pour lancer le server :
+yarn exec json-server meme.json
