@@ -1,25 +1,26 @@
-html, body{
+html{
   height: 100%;
-  background: #6da0c4;
 }
 
-header{
-  display: block;
+body{
+  height: 100%;
+  background: #eff7ff;
+  display: flex;
+  flex-flow: column;
+}
+
+.jumbotron{
+  background: #e8db7d;
   text-align: center;
-  background: #efac47;
-  font-family: "URW Chancery L";
-  font-size: 25px;
 }
 
-.button{
-  margin: 5px;
-  border-radius: 10px;
-  background-color: #99948c;
-  width: 50%;
+header > h1{
+  font-family: "URW Chancery L";
 }
 
 #corps{
-  background-color: #00ff00;
+  flex: 1 1 auto;
+  background-color: #558c8c;
 }
 
 nav{
@@ -31,14 +32,13 @@ nav{
 section{
 }
 
-header, #corps{
+.jumbotron, #corps, footer{
   border-radius: 10px;
-  margin: 3px;
   padding: 0px;
 }
 
 footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  background: #82204a;
+  color: white;
+  text-align: center;
 }
