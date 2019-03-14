@@ -3,21 +3,35 @@
   <head>
     <meta charset="utf-8"/>
     <title>Meme Quizz</title>
-    <link rel="stylesheet" href="css/flex.css"/>
-    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/page.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/page.js"></script>
   </head>
   <body>
-    <header>
-      <h1>Meme land</h1>
-    </header>
-    <nav>
-      <input class="button" id="memes" value="Liste de memes">
-      <input class="button" id="add" value="Ajouter un meme">
-      <input class="button" id="question" value="Répondre à une question">
-    </nav>
-    <footer>
-      <h4>©Département Informatique ⚛ IUT d'Orléans</h4>
+    <div class="jumbotron m-2">
+      <h1 class="display-4">Meme Land</h1>
+      <p class="lead">Votre banque de memes professionnel.</p>
+      <p class="lead">
+        <div class="btn-toolbar mb-3 mx-auto" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mr-2 w-50 justify-content-center mx-auto" role="group" aria-label="First group">
+            <button type="button" class="btn btn-secondary" id="memes" >Dictionnaire de memes</button>
+            <button type="button" class="btn btn-secondary" id="question">Quizz time !</button>
+            <button type="button" class="btn btn-secondary" id="add">Proposer un ajout</button>
+          </div>
+        </div>
+      </p>
+    </div>
+    <div id="corps" class="m-2">
+      <section id="content">
+        <h1>test</test>
+      </section>
+    </div>
+    <footer class="m-2">
+      <p>©Département Informatique - IUT d'Orléans</p>
     </footer>
   </body>
 </html>

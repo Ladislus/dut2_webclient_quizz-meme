@@ -1,0 +1,44 @@
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  background: #eff7ff;
+  display: flex;
+  flex-flow: column;
+}
+
+.jumbotron{
+  background: #e8db7d;
+  text-align: center;
+}
+
+header > h1{
+  font-family: "URW Chancery L";
+}
+
+#corps{
+  flex: 1 1 auto;
+  background-color: #558c8c;
+}
+
+nav{
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+}
+
+section{
+}
+
+.jumbotron, #corps, footer{
+  border-radius: 10px;
+  padding: 0px;
+}
+
+footer{
+  background: #82204a;
+  color: white;
+  text-align: center;
+}
