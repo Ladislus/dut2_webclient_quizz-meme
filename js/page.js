@@ -22,18 +22,17 @@ $(function() {
     $("#content").empty(); }
 
   function getQuestions() {
-    $.ajax({
-      url: "http://localhost:3000/questions/",
-      type: "GET",
-      dataType: "json",
-      sucess: function(questions) {
-        console.log("SUCCESSFULLY LOADED QUESTIONS");
-        let question_list = [];
-        for (let i = 0; i < questions.length; i++) {
-          question_list[i] = Question(questions[i].id, questions[i].type, questions[i].entitled, question[i].id_rep); }
-        return question_list; },
-      error : function() {
-        console.log("ERROR : COULDN'T LOAD QUESTIONS");
-        return null; }}); }
+    fetch("http://localhost:3000/questions/")
+    .then(response => {
+      if (response.ok) return response.json();
+      else throw new Error("ERROR : Fetching questions (" + response.status + ")"); }); }
+
+  function getMemes() {
+    fetch("http://localhost:3000/memes/")
+    .then(response => {
+      if (response.ok) return response.json();
+      else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); }); }
+
+  $("#memes").on("click", getMemes);
 
 });
