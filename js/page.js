@@ -49,7 +49,8 @@ $(function() {
               .append($('<h5 class="card-title">' + meme.title + '</h5>'))
               .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
               .append($('<p class="card-text">' + meme.year + '</p>'))
-              .append($('<a href="#" class="btn btn-primary">Modifier</a>')).on("click", meme, details)
+              .append($('<a href="#" class="btn btn-primary">Modify</a>')).on("click", meme, details)
+              .append($('<a href="#" class="btn btn-danger float-right">Delete</a>')).on("click", meme, details2)
             )
           )
         );
@@ -57,9 +58,14 @@ $(function() {
   }
 
   function details(event){
-      refreshPage();
       memeLayout();
       fillFormMeme(event.data);
+  }
+
+  function details2(event){
+      refreshPage();
+      suppr(event.data);
+      getMemes();
   }
 
   function fillFormMeme(m){
@@ -108,7 +114,7 @@ $(function() {
   function quizz() {
     refreshPage();
     $("#content")
-      .append($('<div class="row h-100">')
+      .append($('<div class="row mx-auto h-100">')
         .append($('<div class="col-12 text-right float-right">')
           .append($('<button type="button" id="ask" class="btn btn-secondary m-1 p-0">Proposer une question</button>'))
         )
@@ -138,7 +144,7 @@ $(function() {
           success: function(msg) {
             alert("Meme ajouté !");
             getMemes(); },
-          error: function(req, status, err) { alert("ERROR"); }});;
+          error: function(req, status, err) { alert("ERROR"); }});
         }
 
   function modify(){
@@ -162,8 +168,22 @@ $(function() {
           success: function(msg) {
             alert("Meme sauvegardé !");
             getMemes(); },
-          error: function(req, status, err) { alert("ERROR"); }});;
+          error: function(req, status, err) { alert("ERROR"); }});
         }
+
+    function suppr(meme){
+
+        $.ajax({
+            url: "http://localhost:3000/memes/"+meme.id,
+            type: "DELETE",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(meme),
+            success: function(msg) {
+              alert("Meme supprimé !");
+              getMemes(); },
+            error: function(req, status, err) { alert("ERROR"); }});
+          }
 
   getMemes();
 
