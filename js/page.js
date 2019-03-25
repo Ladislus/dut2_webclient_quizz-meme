@@ -121,7 +121,7 @@ $(function() {
 
   function adder() {
 
-    var meme = new Meme(
+    let meme = new Meme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
       $("#dateMeme").val(),
@@ -143,7 +143,7 @@ $(function() {
 
   function modify(){
 
-    var meme = new Meme(
+    let meme = new Meme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
       $("#dateMeme").val(),
@@ -162,7 +162,7 @@ $(function() {
           success: function(msg) {
             alert("Meme sauvegardé !");
             getMemes(); },
-          error: function(req, status, err) { alert("ERROR"); }});;
+          error: function(req, status, err) { alert("ERROR"); }});
         }
 
   getMemes();
