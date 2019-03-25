@@ -2,15 +2,38 @@
 
 Projet Web du semestre 4 sur un Quizz de memes.
 Membre :
-Alexis DUPRE
-Adrien FOUCAULT
+Alexis DUPRE,
+Adrien FOUCAULT,
 Ladislas WALCAK
 
-#INSTALLATION
+**Installation**
 
-A la racine, exécuter :
-yarn add json-server
-yarn add jquery
+*A la racine, exécuter :*
 
-Pour lancer le server :
-yarn exec json-server meme.json
+
+1.  `yarn add json-server`
+
+
+2.  `yarn add jquery`
+
+*Pour lancer le server :*
+
+`yarn exec json-server meme.json`
+
+**Fonctionnalités :**
+
+
+*  *Page de base + Bouton de gauche :*
+
+Bibliothèques de memes (Image, nom, description, date).
+Chaque objet est modifiable.
+
+
+*  *Bouton du milieu :*
+
+Question généré aléatoirement sur les memes disponibles.
+
+
+*  *Bouton de droite :*
+
+Ajouter un meme.
