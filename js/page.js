@@ -89,7 +89,7 @@ $(function() {
             .append($('<input class="form-control" type="url" id="urlMeme" value="" placeholder="URL for the image of the meme" required>'))
           )
           .append($('<div class="col-12 p-1">')
-            .append($('<textarea rows="3" class="form-control" id="descMeme" form="formmeme" value="" placeholder="Enter description of the meme" required></textarea>'))
+            .append($('<textarea rows="3" class="form-control" id="descMeme" form="formMeme" value="" placeholder="Enter description of the meme" required></textarea>'))
           )
           .append($('<div class="col-lg-2 col-sm-6 p-1">')
             .append(isnew?$('<input class="form-control" type="submit" value="Add">')
