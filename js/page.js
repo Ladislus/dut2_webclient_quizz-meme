@@ -35,4 +35,11 @@ $(function() {
 
   $("#memes").on("click", getMemes);
 
+  function addMemeElement(){
+    refreshPage();
+    $("#content").append($('<form class="memeAdder" action="index.html" method="post"><input type="text" name="nomMeme" value="" placeholder="Name of the meme"><input type="text" name="descMeme" value="" placeholder="Enter description of the meme"><input type="date" name="" value=""><input type="url" name="urlMeme" value="" placeholder="URL for the image of the meme"><input type="submit" name="" value="Confirm"></form>')); }
+
+  function browseDictionnary(){}
+
+  function prepareQuizz(){}
 });
