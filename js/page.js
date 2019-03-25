@@ -63,12 +63,19 @@ $(function() {
   }
 
   $("#memes").on("click", getMemes);
+  $("#add").on("click", addMemeLayout);
 
-  function addMemeElement(){
+  function addMemeLayout(){
     refreshPage();
-    $("#content").append($('<form class="memeAdder" action="index.html" method="post"><input type="text" name="nomMeme" value="" placeholder="Name of the meme"><input type="text" name="descMeme" value="" placeholder="Enter description of the meme"><input type="date" name="" value=""><input type="url" name="urlMeme" value="" placeholder="URL for the image of the meme"><input type="submit" name="" value="Confirm"></form>')); }
+    $("#content").append($('<form id="formMeme" method="post"><input type="text" id="nameMeme" value="" placeholder="Name of the meme" required><input id="descMeme" type="text" value="" placeholder="Enter description of the meme" required><input id="dateMeme" type="date" value="" required><input id="urlMeme" type="url" value="" placeholder="URL for the image of the meme" required><input id="addButton" type="submit" value="Confirm"></form>'));
+    $("#formMeme").onsubmit = function(){
 
-  function browseDictionnary(){}
+      console.log("Cocuou");
+      let name = $("#nameMeme").value;
+      let desc = $("#descMeme").value;
+      let date = $("#dateMeme").value;
+      let url = $("#urlMeme").value;
+    }
+  }
 
-  function prepareQuizz(){}
 });
