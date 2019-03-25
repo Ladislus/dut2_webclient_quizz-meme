@@ -53,7 +53,7 @@ section{
   white-space: nowrap;
 }
 
-.card-text{
+#desc{
   overflow-y: auto;
   height: 8em;
 }
