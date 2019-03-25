@@ -34,10 +34,26 @@ $(function() {
 
   function fillMemes(memes) {
     refreshPage();
-    $("#content").append($('<div id="cardDeck" class="row m-3 mx-auto justify-content-center">'));
+    $("#content")
+      .append($('<div id="cardDeck" class="row m-3 mx-auto justify-content-center">'));
 
     for(let meme of memes) {
-      $("#cardDeck").append($('<div class="col-lg-4 col-sm-6 p-2"><div class="card m-3 h-100"><div class="img-container d-flex align-items-center"><img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap"></div><div class="card-body"><h5 class="card-title">' + meme.title + '</h5><p id="desc" class="card-text">' + meme.description + '</p><p class="card-text">' + meme.year + '</p><a href="#" class="btn btn-primary">Modifier</a></div></div></div>')); }}
+      $("#cardDeck")
+        .append($('<div class="col-lg-4 col-sm-6 p-2">')
+          .append($('<div class="card m-3 h-100">')
+            .append($('<div class="img-container d-flex align-items-center">')
+              .append($('<img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap">'))
+            )
+            .append($('<div class="card-body">')
+              .append($('<h5 class="card-title">' + meme.title + '</h5>'))
+              .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
+              .append($('<p class="card-text">' + meme.year + '</p>'))
+              .append($('<a href="#" class="btn btn-primary">Modifier</a>'))
+            )
+          )
+        );
+    }
+  }
 
   function details(event){
       refreshPage();
@@ -50,7 +66,26 @@ $(function() {
 
   function memeLayout(){
     refreshPage();
-    $("#content").append($('<form class="memeAdder" id="formMeme" method="POST"><div class="row m-3 mx-auto justify-content-center"><div class="col-lg-6 col-sm-12 p-1"><input class="form-control" type="text" id="nameMeme" value="" placeholder="Name of the meme" required></div><div class="col-lg-6 col-sm-12 p-1"><input class="form-control" type="date" id="dateMeme" value="" required></div><div class="col-12 p-1"><input class="form-control" type="url" id="urlMeme" value="" placeholder="URL for the image of the meme" required></div><div class="col-12 p-1"><textarea rows="3" class="form-control" id="descMeme" form="formmeme" value="" placeholder="Enter description of the meme" required></textarea></div><div class="col-lg-2 col-sm-6 p-1"><input class="form-control" type="submit" name="confirmMemeAdd" value="Confirm"></div></div></form>'));
+    $("#content")
+      .append($('<form class="memeAdder" id="formMeme" method="POST">')
+        .append($('<div class="row m-3 mx-auto justify-content-center">')
+          .append($('<div class="col-lg-6 col-sm-12 p-1">')
+            .append($('<input class="form-control" type="text" id="nameMeme" value="" placeholder="Name of the meme" required>'))
+          )
+          .append($('<div class="col-lg-6 col-sm-12 p-1">')
+            .append($('<input class="form-control" type="date" id="dateMeme" value="" required>'))
+          )
+          .append($('<div class="col-12 p-1">')
+            .append($('<input class="form-control" type="url" id="urlMeme" value="" placeholder="URL for the image of the meme" required>'))
+          )
+          .append($('<div class="col-12 p-1">')
+            .append($('<textarea rows="3" class="form-control" id="descMeme" form="formmeme" value="" placeholder="Enter description of the meme" required></textarea>'))
+          )
+          .append($('<div class="col-lg-2 col-sm-6 p-1">')
+            .append($('<input class="form-control" type="submit" name="confirmMemeAdd" value="Confirm">'))
+          )
+        )
+      );
     adder(); }
 
   function adder() {
