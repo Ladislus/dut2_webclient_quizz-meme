@@ -39,6 +39,12 @@ $(function() {
     for(let meme of memes) {
       $("#cardDeck").append($('<div class="col-lg-4 col-sm-6 p-2"><div class="card m-3 h-100"><div class="img-container d-flex align-items-center"><img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap"></div><div class="card-body"><h5 class="card-title">' + meme.title + '</h5><p id="desc" class="card-text">' + meme.description + '</p><p class="card-text">' + meme.year + '</p><a href="#" class="btn btn-primary">Modifier</a></div></div></div>')); }}
 
+  function details(event){
+      refreshPage();
+      //formTask();
+      //fillFormTask(event.data);
+      }
+
   $("#memes").on("click", getMemes);
   $("#add").on("click", memeLayout);
 
