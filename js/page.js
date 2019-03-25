@@ -27,20 +27,6 @@ $(function() {
       if (response.ok) return response.json();
       else throw new Error("ERROR : Fetching questions (" + response.status + ")"); }); }
 
-// async function getMemes(){
-//   await $.ajax({
-//     url: "http://localhost:3000/memes/",
-//     type: "GET",
-//     dataType: "json",
-//     success: function(data){
-//       let memes = JSON.parse(data);
-//       fillMemes(memes);
-//     },
-//     error: function(err){
-//       console.log(err);
-//     }
-//   })
-// }
   function getMemes() {
     fetch("http://localhost:3000/memes/")
     .then(response => {
@@ -58,9 +44,27 @@ $(function() {
       for(let meme of memes){
         console.log(meme);
         $("#cardDeck")
-          .append($('<div class="col-lg-4 col-sm-6 p-2"><div class="card m-3 h-100"><div class="img-container d-flex align-items-center"><img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap"></div><div class="card-body"><h5 class="card-title">' + meme.title + '</h5><p id="desc" class="card-text">' + meme.description + '</p><p class="card-text">' + meme.year + '</p><a href="#" class="btn btn-primary">Modifier</a></div></div></div>'));
+          .append($('<div class="col-lg-4 col-sm-6 p-2">')
+            .append($('<div class="card m-3 h-100">')
+              .append($('<div class="img-container d-flex align-items-center">')
+                .append($('<img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap">'))
+              )
+              .append($('<div class="card-body">')
+                .append($('<h5 class="card-title">' + meme.title + '</h5>'))
+                .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
+                .append($('<p class="card-text">' + meme.year + '</p>'))
+                .append($('<a href="#" class="btn btn-primary">Modifier</a>').on("click", meme, details))
+              )
+            )
+          );
       }
   }
+
+  function details(event){
+      refreshPage();
+      //formTask();
+      //fillFormTask(event.data);
+      }
 
   $("#memes").on("click", getMemes);
 
