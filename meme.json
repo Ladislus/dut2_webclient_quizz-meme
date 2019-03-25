@@ -4,43 +4,57 @@
       "id": 0,
       "title": "Doge",
       "description": "Doge is a slang term for \"dog\" that is primarily associated with pictures of Shiba Inus.",
-      "year": "June 24th, 2005",
-      "img_link":"https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"
+      "year": "2005-06-24",
+      "img_link": "https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"
     },
     {
       "id": 1,
       "title": "Nyan Cat",
       "description": "Nyan Cat, also known as Pop Tart Cat, is an 8-bit animation depicting a cat with the body of a cherry Pop-Tart flying through outer space.",
-      "year": "April 2nd, 2011",
-      "img_link":"https://i.kym-cdn.com/entries/icons/mobile/000/005/608/nyan-cat-01-625x450.jpg"
+      "year": "2011-04-02",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/005/608/nyan-cat-01-625x450.jpg"
     },
     {
       "id": 2,
       "title": "Awkward Moment Seal",
       "description": "Awkward Moment Seal is an advice animal image macro series featuring a seal with a wide-eyed expression and captions describing socially awkward or uncomfortable situations.",
-      "year": "April 15th, 2014",
-      "img_link":"https://i.kym-cdn.com/entries/icons/mobile/000/015/378/lttujcv.jpg"
+      "year": "2014-04-15",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/015/378/lttujcv.jpg"
     },
     {
       "id": 3,
       "title": "Rickroll",
       "description": "Rick Astley's dance pop single \"Never Gonna Give You Up\" was originally released as part of his 1987 solo debut album Whenever You Need Somebody. Upon its initial release, the single became a number one hit on several international charts, including the Billboard Hot 100 and UK Singles Chart[1]. YouTuber Erik Helwig claims to have prank called a Michigan radio station after a sports game and played \"Never Gonna Give You Up\" over the phone on August 31st, 2006",
-      "year": "August 31st, 2006",
-      "img_link":"https://i.kym-cdn.com/entries/icons/mobile/000/000/007/bd6.jpg"
+      "year": "2006-08-31",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/007/bd6.jpg"
     },
     {
       "id": 4,
       "title": "This is Sparta!",
       "description": "The scene originates from the 2006 film 300 directed by Zack Snyder, an American film adapted from a graphic novel of the same name by Frank Miller, a fictionalized retelling of the Battle of Thermopylae.",
-      "year": "October 10th, 2006",
-      "img_link":"https://i.kym-cdn.com/entries/icons/medium/000/000/026/Gerard-Butler-This-Is-Sparta.jpg"
+      "year": "2006-10-10",
+      "img_link": "https://i.kym-cdn.com/entries/icons/medium/000/000/026/Gerard-Butler-This-Is-Sparta.jpg"
     },
     {
       "id": 5,
       "title": "Disaster Girl",
       "description": "The photograph of the girl and the burning house was taken by Dave Roth[1] in January 2004[2] during the local fire department's live drill training two blocks away from his home in Mebane, North Carolina. While observing the fire, Dave caught his daughter, Zoe, smiling devilishly juxtaposed against the burning house.",
-      "year": "January 2nd, 2007",
-      "img_link":"https://i.kym-cdn.com/photos/images/newsfeed/000/000/130/disaster-girl.jpg"
+      "year": "2007-01-02",
+      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/000/130/disaster-girl.jpg"
+    },
+    {
+      "title": "Patate",
+      "description": "aararazraeae",
+      "year": "2019-03-13",
+      "img_link": "https://vignette.wikia.nocookie.net/desencyclopedie/images/8/8b/Patate_pok%C3%A9mon.png/revision/latest?cb=20110831134035",
+      "id": 6
+    },
+    {
+      "title": "aazrarazr",
+      "description": "azraFZTAF",
+      "year": "2019-03-13",
+      "img_link": "https://blog.lesieur.name/media/images/author-color.png",
+      "id": 7
     }
   ],
   "players": [

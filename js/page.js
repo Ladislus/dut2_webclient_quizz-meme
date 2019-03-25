@@ -1,10 +1,11 @@
 $(function() {
 
-  function Meme(title, description, year, img_link) {
+  function Meme(title, description, year, img_link, id) {
     this.title = title;
     this.description = description;
     this.year = year;
-    this.img_link = img_link; }
+    this.img_link = img_link;
+    this.id = id;}
 
   function User(username, high_score) {
     this.username = username;
@@ -48,7 +49,7 @@ $(function() {
               .append($('<h5 class="card-title">' + meme.title + '</h5>'))
               .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
               .append($('<p class="card-text">' + meme.year + '</p>'))
-              .append($('<a href="#" class="btn btn-primary">Modifier</a>'))
+              .append($('<a href="#" class="btn btn-primary">Modifier</a>')).on("click", meme, details)
             )
           )
         );
@@ -57,14 +58,22 @@ $(function() {
 
   function details(event){
       refreshPage();
-      //formTask();
-      //fillFormTask(event.data);
-      }
+      memeLayout();
+      fillFormMeme(event.data);
+  }
+
+  function fillFormMeme(m){
+    $("#nameMeme").val(m.title),
+    $("#descMeme").val(m.description),
+    $("#dateMeme").val(m.year),
+    $("#urlMeme").val(m.img_link),
+    $("#idMeme").val(m.id)
+  }
 
   $("#memes").on("click", getMemes);
   $("#add").on("click", memeLayout);
 
-  function memeLayout(){
+  function memeLayout(isnew){
     refreshPage();
     $("#content")
       .append($('<form class="memeAdder" id="formMeme" method="POST">')
@@ -82,25 +91,22 @@ $(function() {
             .append($('<textarea rows="3" class="form-control" id="descMeme" form="formmeme" value="" placeholder="Enter description of the meme" required></textarea>'))
           )
           .append($('<div class="col-lg-2 col-sm-6 p-1">')
-            .append($('<input class="form-control" type="submit" name="confirmMemeAdd" value="Confirm">'))
+            .append(isnew?$('<input class="form-control" type="submit" value="Add">').on("click", adder)
+                         :$('<input class="form-control" type="submit" value="Save">').on("click", modify)
+            )
           )
+          .append($('<input type="hidden" id="idMeme">'))
         )
       );
-    adder(); }
+    }
 
   function adder() {
-    $("#formMeme").on("submit", function(e) {
-      let name = $("#nameMeme").val();
-      let desc = $("#descMeme").val();
-      let date = $("#dateMeme").val();
-      let url = $("#urlMeme").val();
-
-      console.log(name);
-      console.log(desc);
-      console.log(date);
-      console.log(url);
-
-      let meme = new Meme(name, desc, date, url);
+    var meme = new Meme(
+      $("#nameMeme").val(),
+      $("#descMeme").val(),
+      $("#dateMeme").val(),
+      $("#urlMeme").val()
+    );
       console.log(JSON.stringify(meme));
 
       $.ajax({
@@ -112,9 +118,31 @@ $(function() {
           success: function(msg) {
             alert("Meme sauvegardé !");
             getMemes(); },
-          error: function(req, status, err) { alert("ERROR"); }});
-      e.preventDefault(); }); }
+          error: function(req, status, err) { alert("ERROR"); }});;
+        }
 
+  function modify(){
+    var meme = new Meme(
+      $("#nameMeme").val(),
+      $("#descMeme").val(),
+      $("#dateMeme").val(),
+      $("#urlMeme").val(),
+      $("#idMeme").val()
+    );
+
+      console.log(JSON.stringify(meme));
+
+      $.ajax({
+          url: "http://localhost:3000/memes/"+meme.id,
+          type: "PUT",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify(meme),
+          success: function(msg) {
+            alert("Meme sauvegardé !");
+            getMemes(); },
+          error: function(req, status, err) { alert("ERROR"); }});;
+        }
 
   getMemes();
 
