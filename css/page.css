@@ -4,23 +4,23 @@ html{
 
 body{
   height: 100%;
-  background: #eff7ff;
+  background: #ffffff;
   display: flex;
   flex-flow: column;
 }
 
 .jumbotron{
-  background: #e8db7d;
+  background: #7c98b3;
   text-align: center;
 }
 
-header > h1{
+.jumbotron > h1{
   font-family: "URW Chancery L";
 }
 
 #corps{
   flex: 1 1 auto;
-  background-color: #558c8c;
+  background-color: #cee5f2;
 }
 
 nav{
@@ -32,13 +32,39 @@ nav{
 section{
 }
 
+.card{
+  background: #accbe1;
+}
+
+.img-container{
+  height: 10em;
+}
+
+.card-img-top{
+  display: block;
+  max-width:100%;
+  max-height:100%;
+  width: auto;
+  height: auto;
+}
+
+.card-title{
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.card-text{
+  overflow-y: auto;
+  height: 8em;
+}
+
 .jumbotron, #corps, footer{
   border-radius: 10px;
   padding: 0px;
 }
 
 footer{
-  background: #82204a;
+  background: #7c98b3;
   color: white;
   text-align: center;
 }
