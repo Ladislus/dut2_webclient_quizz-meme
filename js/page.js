@@ -63,5 +63,19 @@ $(function() {
   }
 
   $("#memes").on("click", getMemes);
+  $("#add").on("click", addMemeLayout);
+
+  function addMemeLayout(){
+    refreshPage();
+    $("#content").append($('<form id="formMeme" method="post"><input type="text" id="nameMeme" value="" placeholder="Name of the meme" required><input id="descMeme" type="text" value="" placeholder="Enter description of the meme" required><input id="dateMeme" type="date" value="" required><input id="urlMeme" type="url" value="" placeholder="URL for the image of the meme" required><input id="addButton" type="submit" value="Confirm"></form>'));
+    $("#formMeme").onsubmit = function(){
+
+      console.log("Cocuou");
+      let name = $("#nameMeme").value;
+      let desc = $("#descMeme").value;
+      let date = $("#dateMeme").value;
+      let url = $("#urlMeme").value;
+    }
+  }
 
 });
