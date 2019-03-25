@@ -64,6 +64,4 @@ $(function() {
 
   $("#memes").on("click", getMemes);
 
-  getMemes();
-
 });

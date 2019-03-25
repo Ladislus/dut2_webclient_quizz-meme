@@ -16,55 +16,34 @@
       <h1 class="display-4">Meme Land</h1>
       <p class="lead">Votre banque de memes professionnel.</p>
       <p class="lead">
-        <div class="btn-toolbar mb-3 mx-auto" role="toolbar" aria-label="Toolbar with button groups">
-          <div class="btn-group mr-2 w-50 justify-content-center mx-auto" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary" id="memes" >Dictionnaire de memes</button>
-            <button type="button" class="btn btn-secondary" id="question">Quizz time !</button>
-            <button type="button" class="btn btn-secondary" id="add">Proposer un ajout</button>
-          </div>
+        <div class="btn-group justify-content-center mx-auto flex-wrap" data-toggle="buttons" role="group" aria-label="First group">
+          <button type="button" class="btn btn-secondary" id="memes" >Dictionnaire de memes</button>
+          <button type="button" class="btn btn-secondary" id="question">Quizz time !</button>
+          <button type="button" class="btn btn-secondary" id="add">Proposer un ajout</button>
         </div>
       </p>
     </div>
     <div id="corps" class="m-2">
       <section id="content">
-        <div class="row m-3 mx-auto justify-content-center">
-          <div class="col-lg-4 col-sm-6 p-2">
-            <div class="card m-3 h-100">
-              <div class="img-container d-flex align-items-center">
-                <img class="card-img-top mx-auto" src="../../Images/aaaaaaaaaaaaaaaa.png" alt="Card image cap">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Modifier</a>
-              </div>
+        <form class="memeAdder" id="formmeme" action="index.html" method="post">
+          <div class="row m-3 mx-auto justify-content-center">
+            <div class="col-lg-6 col-sm-12 p-1">
+              <input class="form-control" type="text" name="nomMeme" value="" placeholder="Name of the meme" required>
+            </div>
+            <div class="col-lg-6 col-sm-12 p-1">
+              <input class="form-control" type="date" name="dateMeme" value="" required>
+            </div>
+            <div class="col-12 p-1">
+              <input class="form-control" type="url" name="urlMeme" value="" placeholder="URL for the image of the meme" required>
+            </div>
+            <div class="col-12 p-1">
+              <textarea rows="3" class="form-control" name="descMeme" form="formmeme" value="" placeholder="Enter description of the meme" required></textarea>
+            </div>
+            <div class="col-lg-2 col-sm-6 p-1">
+              <input class="form-control" type="submit" name="confirmMemeAdd" value="Confirm">
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 p-2">
-            <div class="card m-3 h-100">
-              <div class="img-container d-flex align-items-center">
-                <img class="card-img-top mx-auto" src="../../Images/0.jpeg" alt="Card image cap">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Special title treatmentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
-                <p class="card-text">With supporting tent.</p>
-                <a href="#" class="btn btn-primary">Modifier</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 p-2">
-            <div class="card m-3 h-100">
-              <div class="img-container d-flex align-items-center">
-                <img class="card-img-top m-auto" src="../../Images/TeamAutée.png" alt="Card image cap">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Modifier</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        </form>
       </section>
     </div>
     <footer class="m-2">
