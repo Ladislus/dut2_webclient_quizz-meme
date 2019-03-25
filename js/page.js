@@ -92,13 +92,17 @@ $(function() {
             .append($('<textarea rows="3" class="form-control" id="descMeme" form="formmeme" value="" placeholder="Enter description of the meme" required></textarea>'))
           )
           .append($('<div class="col-lg-2 col-sm-6 p-1">')
-            .append(isnew?$('<input class="form-control" type="submit" value="Add">').on("click", adder)
-                         :$('<input class="form-control" type="submit" value="Save">').on("click", modify)
+            .append(isnew?$('<input class="form-control" type="submit" value="Add">')
+                         :$('<input class="form-control" type="submit" value="Save">')
             )
           )
           .append($('<input type="hidden" id="idMeme">'))
         )
       );
+      $("#formMeme").submit(function( event ) {event.preventDefault();
+                                              isnew?adder()
+                                              :modify();
+                                              })
     }
 
   function quizz() {
@@ -116,6 +120,7 @@ $(function() {
   }
 
   function adder() {
+
     var meme = new Meme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
@@ -131,12 +136,13 @@ $(function() {
           contentType: "application/json",
           data: JSON.stringify(meme),
           success: function(msg) {
-            alert("Meme sauvegardé !");
+            alert("Meme ajouté !");
             getMemes(); },
           error: function(req, status, err) { alert("ERROR"); }});;
         }
 
   function modify(){
+
     var meme = new Meme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
