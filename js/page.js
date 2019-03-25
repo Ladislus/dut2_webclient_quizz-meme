@@ -71,6 +71,7 @@ $(function() {
   }
 
   $("#memes").on("click", getMemes);
+  $("#question").on("click", quizz);
   $("#add").on("click", memeLayout);
 
   function memeLayout(isnew){
@@ -99,6 +100,20 @@ $(function() {
         )
       );
     }
+
+  function quizz() {
+    refreshPage();
+    $("#content")
+      .append($('<div class="row h-100">')
+        .append($('<div class="col-12 text-right float-right">')
+          .append($('<button type="button" id="ask" class="btn btn-secondary m-1 p-0">Proposer une question</button>'))
+        )
+        .append($('<div class="col-12 text-center">')
+          .append($('<h1>Commencer un quizz !</h1>'))
+          .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>'))
+        )
+      )
+  }
 
   function adder() {
     var meme = new Meme(
