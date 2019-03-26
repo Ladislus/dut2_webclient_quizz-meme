@@ -125,7 +125,7 @@ $(function() {
                 console.log("CLEANING");
                 $("#answer").empty();
                 console.log("CLEANED");
-                if ($("#type").val() == "string_question") {
+                if ($("#type").val() == "string_qu") {
                   console.log("STRING QUESTION");
                   $("#answer").append($('<input class="form-control" type="text" id="rep" value="" placeholder="Response" required>')); }
                 else {
