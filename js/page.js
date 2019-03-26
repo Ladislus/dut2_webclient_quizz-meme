@@ -36,6 +36,9 @@ $(function() {
   function fillMemes(memes) {
     refreshPage();
     $("#content")
+      .append($('<div class="col-12 p-2">')
+        .append($('<input class="form-control" type="text" id="searchbar" placeholder="Search for memes..">').on("keyup",search))
+      )
       .append($('<div id="cardDeck" class="row m-3 mx-auto justify-content-center">'));
 
     for(let meme of memes) {
@@ -232,6 +235,28 @@ $(function() {
               getMemes(); },
             error: function(req, status, err) { alert("ERROR"); }});
           }
+
+
+    function search() {
+      // Declare variables
+      var input, filter, deck, cards, c, i, txtValue;
+      input = document.getElementById('searchbar');
+      filter = input.value.toUpperCase();
+      deck = document.getElementById("cardDeck");
+      cards = deck.getElementsByTagName('div');
+
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < cards.length; i++) {
+        c = cards[i].getElementsByTagName('div')[1].getElementsByClassName('card-title')[0];
+        txtValue = c.textContent || c.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          cards[i].style.display = "";
+        }
+        else {
+          cards[i].style.display = "none";
+        }
+      }
+    }
 
   getMemes();
 
