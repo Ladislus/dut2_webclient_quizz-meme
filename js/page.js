@@ -49,8 +49,8 @@ $(function() {
               .append($('<h5 class="card-title">' + meme.title + '</h5>'))
               .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
               .append($('<p class="card-text">' + meme.year + '</p>'))
-              .append($('<a href="#" class="btn btn-primary">Modify</a>')).on("click", meme, details)
-              .append($('<a href="#" class="btn btn-danger float-right">Delete</a>')).on("click", meme, details2)
+              .append($('<a class="btn btn-primary">Modify</a>').on("click", meme, details))
+              .append($('<a class="btn btn-danger float-right">Delete</a>').on("click", meme, supprMeme))
             )
           )
         );
@@ -62,7 +62,7 @@ $(function() {
       fillFormMeme(event.data);
   }
 
-  function details2(event){
+  function supprMeme(event){
       refreshPage();
       suppr(event.data);
       getMemes();
@@ -111,12 +111,39 @@ $(function() {
                                               })
     }
 
+  function questionLayout(isnew){
+    refreshPage();
+    $("#content")
+      .append($('<form class="questionAdder" id="formQuestion" method="POST">')
+        .append($('<div class="row m-3 mx-auto justify-content-center">')
+          .append($('<div class="col-lg-6 col-sm-12 p-1">')
+            .append($('<input class="form-control" type="text" id="entitled" value="" placeholder="Entitled of question" required>'))
+          )
+          .append($('<div class="col-lg-6 col-sm-12 p-1">')
+            .append($('<select class="form-control" id="type"><option value="img_qu">Image Question</option><option value="string_qu">Text Question</option><select>'))
+          )
+          .append($('<div class="col-12 p-1">')
+            .append($('<input class="form-control" type="text" id="idRep" value="" placeholder="Response" required>'))
+          )
+          .append($('<div class="col-lg-2 col-sm-6 p-1">')
+            .append(isnew?$('<input class="form-control" type="submit" value="Add">')
+                         :$('<input class="form-control" type="submit" value="Save">')
+            )
+          )
+          .append($('<input type="hidden" id="idMeme">'))
+        )
+      );
+      $("#formQuestion").submit(function( event ) {event.preventDefault();
+                                              adderQuestion();
+                                              })
+  }
+
   function quizz() {
     refreshPage();
     $("#content")
       .append($('<div class="row mx-auto h-100">')
         .append($('<div class="col-12 text-right float-right">')
-          .append($('<button type="button" id="ask" class="btn btn-secondary m-1 p-0">Proposer une question</button>'))
+          .append($('<button type="button" id="ask" class="btn btn-secondary m-1 p-0">Proposer une question</button>').on("click", questionLayout))
         )
         .append($('<div class="col-12 text-center">')
           .append($('<h1>Commencer un quizz !</h1>'))
@@ -124,6 +151,27 @@ $(function() {
         )
       )
   }
+
+  function adderQuestion() {
+
+    var qu = new Question(
+      $("#entitled").val(),
+      $("#type").val(),
+      $("#idRep").val(),
+    );
+      console.log(JSON.stringify(qu));
+
+      $.ajax({
+          url: "http://localhost:3000/questions",
+          type: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify(qu),
+          success: function(msg) {
+            alert("Question ajoutée !");
+            getQuestions(); },
+          error: function(req, status, err) { alert("ERROR"); }});
+        }
 
   function adder() {
 
