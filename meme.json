@@ -1,11 +1,11 @@
 {
   "memes": [
     {
-      "id": 0,
       "title": "Doge",
       "description": "Doge is a slang term for \"dog\" that is primarily associated with pictures of Shiba Inus.",
       "year": "2005-06-24",
-      "img_link": "https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"
+      "img_link": "https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg",
+      "id": 0
     },
     {
       "id": 1,
@@ -13,13 +13,6 @@
       "description": "Nyan Cat, also known as Pop Tart Cat, is an 8-bit animation depicting a cat with the body of a cherry Pop-Tart flying through outer space.",
       "year": "2011-04-02",
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/005/608/nyan-cat-01-625x450.jpg"
-    },
-    {
-      "id": 2,
-      "title": "Awkward Moment Seal",
-      "description": "Awkward Moment Seal is an advice animal image macro series featuring a seal with a wide-eyed expression and captions describing socially awkward or uncomfortable situations.",
-      "year": "2014-04-15",
-      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/015/378/lttujcv.jpg"
     },
     {
       "id": 3,

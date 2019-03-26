@@ -1,5 +1,4 @@
 $(function() {
-
   function Meme(title, description, year, img_link, id) {
     this.title = title;
     this.description = description;
@@ -111,7 +110,7 @@ $(function() {
                                               })
     }
 
-  function questionLayout(isnew){
+  function questionAddLayout(isnew){
     refreshPage();
     $("#content")
       .append($('<form class="questionAdder" id="formQuestion" method="POST">')
@@ -164,17 +163,28 @@ $(function() {
       $("#rep").append($('<option value="' + meme.id + '">' + meme.title + '</option>')); }}
 
 
+  function questLayout(){
+    refreshPage();
+    $("#content")
+      .append($('<div class="row mx-auto h-100">')
+        .append($('<div class="col-12 text-center">')
+          .append($('<h1>Question</h1>'))
+        )
+        .append($('<p>Score </p>')
+          .append('<input type="number" id="score" value="0" disabled>'))
+      )
+  }
 
   function quizz() {
     refreshPage();
     $("#content")
       .append($('<div class="row mx-auto h-100">')
         .append($('<div class="col-12 text-right float-right">')
-          .append($('<button type="button" id="ask" class="btn btn-secondary m-1 p-0">Proposer une question</button>').on("click", questionLayout))
+          .append($('<button type="button" id="ask" class="btn btn-secondary m-1 p-0">Proposer une question</button>').on("click", questionAddLayout))
         )
         .append($('<div class="col-12 text-center">')
           .append($('<h1>Commencer un quizz !</h1>'))
-          .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>'))
+          .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>').on("click", questLayout))
         )
       )
   }
@@ -182,8 +192,8 @@ $(function() {
   function adderQuestion() {
 
     var qu = new Question(
-      $("#entitled").val(),
       $("#type").val(),
+      $("#entitled").val(),
       $("#rep").val(),
     );
       console.log(JSON.stringify(qu));
@@ -262,4 +272,11 @@ $(function() {
 
   getMemes();
 
+
+    function validate() {
+      if ($("#")){
+        $("#score").val() += 1;
+      }
+      layout_newQuestion();
+    }
 });
