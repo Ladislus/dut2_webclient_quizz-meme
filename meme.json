@@ -1,11 +1,11 @@
 {
   "memes": [
     {
-      "id": 0,
       "title": "Doge",
       "description": "Doge is a slang term for \"dog\" that is primarily associated with pictures of Shiba Inus.",
       "year": "2005-06-24",
-      "img_link": "https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"
+      "img_link": "https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg",
+      "id": 0
     },
     {
       "id": 1,
@@ -15,18 +15,18 @@
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/005/608/nyan-cat-01-625x450.jpg"
     },
     {
-      "id": 2,
-      "title": "Awkward Moment Seal",
-      "description": "Awkward Moment Seal is an advice animal image macro series featuring a seal with a wide-eyed expression and captions describing socially awkward or uncomfortable situations.",
-      "year": "2014-04-15",
-      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/015/378/lttujcv.jpg"
-    },
-    {
       "id": 3,
       "title": "Rickroll",
       "description": "Rick Astley's dance pop single \"Never Gonna Give You Up\" was originally released as part of his 1987 solo debut album Whenever You Need Somebody. Upon its initial release, the single became a number one hit on several international charts, including the Billboard Hot 100 and UK Singles Chart[1]. YouTuber Erik Helwig claims to have prank called a Michigan radio station after a sports game and played \"Never Gonna Give You Up\" over the phone on August 31st, 2006",
       "year": "2006-08-31",
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/007/bd6.jpg"
+    },
+    {
+      "title": "xbox",
+      "description": "xbox",
+      "year": "2019-02-27",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/013/106/xbox1.jpg",
+      "id": 4
     }
   ],
   "players": [
@@ -59,6 +59,12 @@
       "entitled": "img_qu",
       "id_rep": "zaezaezae",
       "id": 2
+    },
+    {
+      "type": "string_qu",
+      "entitled": "qsdfqsdf",
+      "id_rep": "zaezaezae",
+      "id": 3
     }
   ]
 }
