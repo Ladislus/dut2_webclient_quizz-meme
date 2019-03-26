@@ -27,20 +27,6 @@
       "description": "Rick Astley's dance pop single \"Never Gonna Give You Up\" was originally released as part of his 1987 solo debut album Whenever You Need Somebody. Upon its initial release, the single became a number one hit on several international charts, including the Billboard Hot 100 and UK Singles Chart[1]. YouTuber Erik Helwig claims to have prank called a Michigan radio station after a sports game and played \"Never Gonna Give You Up\" over the phone on August 31st, 2006",
       "year": "2006-08-31",
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/007/bd6.jpg"
-    },
-    {
-      "id": 4,
-      "title": "This is Sparta!",
-      "description": "The scene originates from the 2006 film 300 directed by Zack Snyder, an American film adapted from a graphic novel of the same name by Frank Miller, a fictionalized retelling of the Battle of Thermopylae.",
-      "year": "2006-10-10",
-      "img_link": "https://i.kym-cdn.com/entries/icons/medium/000/000/026/Gerard-Butler-This-Is-Sparta.jpg"
-    },
-    {
-      "id": 5,
-      "title": "Disaster Girl",
-      "description": "The photograph of the girl and the burning house was taken by Dave Roth[1] in January 2004[2] during the local fire department's live drill training two blocks away from his home in Mebane, North Carolina. While observing the fire, Dave caught his daughter, Zoe, smiling devilishly juxtaposed against the burning house.",
-      "year": "2007-01-02",
-      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/000/130/disaster-girl.jpg"
     }
   ],
   "players": [
@@ -67,6 +53,12 @@
       "type": "string_qu",
       "entitled": "Quel est la race de chien du meme doge ?",
       "id_rep": "Shiba Inu"
+    },
+    {
+      "type": "azezae",
+      "entitled": "img_qu",
+      "id_rep": "zaezaezae",
+      "id": 2
     }
   ]
 }
