@@ -32,12 +32,12 @@
   "players": [
     {
       "id": 0,
-      "username": "player",
-      "high_score": 0
+      "username": "Michael",
+      "high_score": -100
     },
     {
       "id": 1,
-      "username": "meme_lord",
+      "username": "Meme_lord",
       "high_score": 99
     }
   ],
@@ -46,19 +46,13 @@
       "id": 0,
       "type": "img_qu",
       "entitled": "Quel est le meme au chat multicolore ?",
-      "id_rep": 1
+      "id_rep": "1"
     },
     {
       "id": 1,
       "type": "string_qu",
       "entitled": "Quel est la race de chien du meme doge ?",
       "id_rep": "Shiba Inu"
-    },
-    {
-      "type": "azezae",
-      "entitled": "img_qu",
-      "id_rep": "zaezaezae",
-      "id": 2
     }
   ]
 }

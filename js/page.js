@@ -120,10 +120,22 @@ $(function() {
             .append($('<input class="form-control" type="text" id="entitled" value="" placeholder="Entitled of question" required>'))
           )
           .append($('<div class="col-lg-6 col-sm-12 p-1">')
-            .append($('<select class="form-control" id="type"><option value="img_qu">Image Question</option><option value="string_qu">Text Question</option><select>'))
+            .append($('<select class="form-control" id="type"><option value="string_qu">Text Question</option><option value="img_qu">Image Question</option><select>')
+              .on("change", function() {
+                console.log("CLEANING");
+                $("#answer").empty();
+                console.log("CLEANED");
+                if ($("#type").val() == "string_question") {
+                  console.log("STRING QUESTION");
+                  $("#answer").append($('<input class="form-control" type="text" id="rep" value="" placeholder="Response" required>')); }
+                else {
+                  console.log("IMAGE QUESTION");
+                  $("#answer").append($('<select class="form-control" id="rep" value="" required>'));
+                  allMemes(); }})
+              )
           )
-          .append($('<div class="col-12 p-1">')
-            .append($('<input class="form-control" type="text" id="idRep" value="" placeholder="Response" required>'))
+          .append($('<div id="answer" class="col-12 p-1">')
+            .append($('<input class="form-control" type="text" id="rep" value="" placeholder="Response" required>'))
           )
           .append($('<div class="col-lg-2 col-sm-6 p-1">')
             .append(isnew?$('<input class="form-control" type="submit" value="Add">')
@@ -137,6 +149,21 @@ $(function() {
                                               adderQuestion();
                                               })
   }
+
+  function allMemes() {
+    fetch("http://localhost:3000/memes/")
+    .then(response => {
+      if (response.ok) {
+        return response.json(); }
+        else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); })
+      .then(optionMemes); }
+
+  function optionMemes(memes) {
+    console.log("OPTION MEMES !");
+    for (let meme of memes) {
+      $("#rep").append($('<option value="' + meme.id + '">' + meme.title + '</option>')); }}
+
+
 
   function quizz() {
     refreshPage();
@@ -157,7 +184,7 @@ $(function() {
     var qu = new Question(
       $("#entitled").val(),
       $("#type").val(),
-      $("#idRep").val(),
+      $("#rep").val(),
     );
       console.log(JSON.stringify(qu));
 
@@ -169,7 +196,7 @@ $(function() {
           data: JSON.stringify(qu),
           success: function(msg) {
             alert("Question ajoutée !");
-            getQuestions(); },
+            quizz(); },
           error: function(req, status, err) { alert("ERROR"); }});
         }
 
