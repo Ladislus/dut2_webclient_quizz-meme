@@ -22,22 +22,22 @@
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/007/bd6.jpg"
     },
     {
-      "title": "Brent Rambo",
-      "description": "Brent Rambo is a child model featured in a promotional video for Apple's desktop products in the early 1990s. On Reddit, the animated GIF of Rambo giving a thumbs up gesture in the video has been paired with humorous and suggestive clips as a seal of approval, in similar vein to the use of Approval Guy on 4chan.",
-      "year": "2013-03-25",
-      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/538/716/7f5.gif",
+      "title": "xbox",
+      "description": "xbox",
+      "year": "2019-02-27",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/013/106/xbox1.jpg",
       "id": 4
     }
   ],
   "players": [
     {
       "id": 0,
-      "username": "Michael",
-      "high_score": -100
+      "username": "player",
+      "high_score": 0
     },
     {
       "id": 1,
-      "username": "Meme_lord",
+      "username": "meme_lord",
       "high_score": 99
     }
   ],
@@ -46,13 +46,31 @@
       "id": 0,
       "type": "img_qu",
       "entitled": "Quel est le meme au chat multicolore ?",
-      "id_rep": "1"
+      "id_rep": 1
     },
     {
       "id": 1,
       "type": "string_qu",
       "entitled": "Quel est la race de chien du meme doge ?",
       "id_rep": "Shiba Inu"
+    },
+    {
+      "type": "azezae",
+      "entitled": "img_qu",
+      "id_rep": "zaezaezae",
+      "id": 2
+    },
+    {
+      "type": "string_qu",
+      "entitled": "qsdfqsdf",
+      "id_rep": "zaezaezae",
+      "id": 3
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Quel est la marque concurente de Sony ?",
+      "id_rep": "4",
+      "id": 4
     }
   ]
 }

@@ -1,4 +1,8 @@
 $(function() {
+  let global_question = [new Question("string_qu", "Quelle est la race de chien du meme Doge ?", "Shiba Inu")];
+  let asked_question = [];
+  let score = 0;
+
   function Meme(title, description, year, img_link, id) {
     this.title = title;
     this.description = description;
@@ -170,9 +174,11 @@ $(function() {
         .append($('<div class="col-12 text-center">')
           .append($('<h1>Question</h1>'))
         )
+        .append()
         .append($('<p>Score </p>')
-          .append('<input type="number" id="score" value="0" disabled>'))
-      )
+          .append('<p id="score" value=score></p>')
+          .append('<button type="button" id="validation">Validate !</button>').on("click", validate)
+      ))
   }
 
   function quizz() {
@@ -187,6 +193,12 @@ $(function() {
           .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>').on("click", questLayout))
         )
       )
+  }
+
+  function layout_newQuestion() {
+    refreshPage();
+    $("#content")
+      .append()
   }
 
   function adderQuestion() {
@@ -234,13 +246,21 @@ $(function() {
 
   function modify(){
 
-    let meme = new Meme(
+    let meme = new M
+    var qu = new Question(
+      $("#type").val(),
+      $("#entitled").val(),
+      $("#rep").val(),
+    );
+      console.log(JSON.stringify(qu));
+
+      $.ajax(eme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
       $("#dateMeme").val(),
       $("#urlMeme").val(),
       $("#idMeme").val()
-    );
+    ));
 
       console.log(JSON.stringify(meme));
 
@@ -273,10 +293,17 @@ $(function() {
   getMemes();
 
 
-    function validate() {
-      if ($("#")){
-        $("#score").val() += 1;
+    function questAleat(){
+      let qu = global_question[Math.random()*global_question.length];
+      while ( qu in asked_question){
+        qu = global_question[Math.random()*global_question.length];
       }
-      layout_newQuestion();
+      asked_question.push(qu);
+      return qu;
+    }
+
+    function validate() {
+      $("#score").val(parseInt($("#score").val())+1);
+      layout_newQuestion(questAleat());
     }
 });
