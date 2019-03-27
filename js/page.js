@@ -25,13 +25,14 @@ $(function() {
       if (response.ok) return response.json();
       else throw new Error("ERROR : Fetching questions (" + response.status + ")"); }); }
 
-  function getMemes() {
+  function getMemes(page) {
     fetch("http://localhost:3000/memes/")
     .then(response => {
       if (response.ok) {
         return response.json(); }
-        else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); })
-      .then(fillMemes); }
+        else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); }, page)
+      .then(fillMemes);
+  }
 
   function fillMemes(memes) {
     refreshPage();
@@ -39,13 +40,35 @@ $(function() {
       .append($('<div class="col-12 p-2">')
         .append($('<input class="form-control" type="text" id="searchbar" placeholder="Search for memes..">').on("keyup",search))
       )
-      .append($('<div id="cardDeck" class="row m-3 mx-auto justify-content-center">'));
+      .append($('<div id="cardDeck" class="row m-3 mx-auto justify-content-center">'))
+      .append($('<ul class="pagination pagination-sm">'));
 
     for(let meme of memes) {
       $("#cardDeck")
-        .append($('<div class="col-lg-4 col-sm-6 p-2">')
+        .append($('<div class="carte col-lg-4 col-sm-6 p-2">')
           .append($('<div class="card m-3 h-100">')
-            .append($('<div class="m-1 img-container d-flex align-items-center">')
+            .append($('<div class="m-2 img-container d-flex align-items-center">')
+              .append($('<img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap">'))
+            )
+            .append($('<div class="card-body">')
+              .append($('<h5 class="card-title">' + meme.title + '</h5>'))
+              .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
+              .append($('<p class="card-text">' + meme.year + '</p>'))
+              .append($('<button class="btn btn-primary">Modify</button>').on("click", meme, details))
+              .append($('<button class="btn btn-danger float-right">Delete</button>').on("click", meme, supprMeme))
+            )
+          )
+        );
+    }
+
+  }
+
+  function fillListe(memes){
+    for(let meme of memes) {
+      $("#cardDeck")
+        .append($('<div class="carte col-lg-4 col-sm-6 p-2">')
+          .append($('<div class="card m-3 h-100">')
+            .append($('<div class="m-2 img-container d-flex align-items-center">')
               .append($('<img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap">'))
             )
             .append($('<div class="card-body">')
@@ -194,7 +217,7 @@ $(function() {
           data: JSON.stringify(meme),
           success: function(msg) {
             alert("Meme ajouté !");
-            getMemes(); },
+            getMemes(1); },
           error: function(req, status, err) { alert("ERROR"); }});
         }
 
@@ -218,7 +241,7 @@ $(function() {
           data: JSON.stringify(meme),
           success: function(msg) {
             alert("Meme sauvegardé !");
-            getMemes(); },
+            getMemes(1); },
           error: function(req, status, err) { alert("ERROR"); }});
         }
 
@@ -232,7 +255,7 @@ $(function() {
             data: JSON.stringify(meme),
             success: function(msg) {
               alert("Meme supprimé !");
-              getMemes(); },
+              getMemes(1); },
             error: function(req, status, err) { alert("ERROR"); }});
           }
 
@@ -241,23 +264,25 @@ $(function() {
       // Declare variables
       var input, filter, deck, cards, c, i, txtValue;
       input = document.getElementById('searchbar');
-      filter = input.value.toUpperCase();
-      deck = document.getElementById("cardDeck");
-      cards = deck.getElementsByTagName('div');
+      if(input != null){
+        filter = input.value.toUpperCase();
+        deck = document.getElementById("cardDeck");
+        cards = deck.getElementsByClassName('carte');
 
-      // Loop through all list items, and hide those who don't match the search query
-      for (i = 0; i < cards.length; i++) {
-        c = cards[i].getElementsByTagName('div')[1].getElementsByClassName('card-title')[0];
-        txtValue = c.textContent || c.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          cards[i].style.display = "";
-        }
-        else {
-          cards[i].style.display = "none";
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < cards.length; i++) {
+          c = cards[i].getElementsByTagName('div')[2].getElementsByClassName('card-title')[0];
+          txtValue = c.textContent || c.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1 || input.value.replace(/\s/g, '').length == 0) {
+            cards[i].style.display = "";
+          }
+          else {
+            cards[i].style.display = "none";
+          }
         }
       }
     }
 
-  getMemes();
+  getMemes(1);
 
 });
