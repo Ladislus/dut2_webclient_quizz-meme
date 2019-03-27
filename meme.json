@@ -27,6 +27,27 @@
       "year": "2019-02-27",
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/013/106/xbox1.jpg",
       "id": 4
+    },
+    {
+      "title": "All Your Base Are Belong To Us",
+      "description": "\"All Your Base Are Belong to Us\" is a popular engrish catchphrase that grew popular across the internet as early as in 1998. An awkward translation of \"all of your bases are now under our control\", the quote originally appeared in the opening dialogue of Zero Wing, a 16-bit shoot'em up game released in 1989. Marked by poor grammar, the \"All Your Base\" phrase and the dialogue scene went viral on popular discussion forums in 2000, spawning thousands of image macros and flash animations featuring the slogan both on the web and in real life.",
+      "year": "2000-12-06",
+      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/000/999/AllYourBaseAnimated.gif",
+      "id": 5
+    },
+    {
+      "title": "Leekspin",
+      "description": "\"Leekspin\", also known as \"Loituma Girl\", is a flash animation loop of a female anime character twirling a stock of spring onion, often referred to as a leek or a negi, while set to the Finnish folk song \"Ievan Polkka\" (Eva's Polka). This simple animation and it's catchy song managed to make a massive impact on the English and Japanese internet during the mid-2000s, spawning many parodies and remixes.",
+      "year": "2006-05-26",
+      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/328/161/576.gif",
+      "id": 6
+    },
+    {
+      "title": "Trollface",
+      "description": "Trollface is a rage comic character wearing a mischievous smile that is meant to represent the facial expression of an Internet troll. The image is most commonly used to portray a character as a troll in rage comics, or alternatively, to identify oneself or another participant as such in online discussions.",
+      "year": "2008-09-19",
+      "img_link": "https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg",
+      "id": 7
     }
   ],
   "players": [
