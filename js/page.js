@@ -1,4 +1,7 @@
 $(function() {
+
+  let global_questions = new Array();
+
   function Meme(title, description, year, img_link, id) {
     this.title = title;
     this.description = description;
@@ -22,7 +25,11 @@ $(function() {
     fetch("http://localhost:3000/questions/")
     .then(response => {
       if (response.ok) return response.json();
-      else throw new Error("ERROR : Fetching questions (" + response.status + ")"); }); }
+      else throw new Error("ERROR : Fetching questions (" + response.status + ")"); })
+      .then(var_question); }
+
+  function var_question(questions) {
+    global_questions = questions; }
 
   function getMemes() {
     fetch("http://localhost:3000/memes/")
@@ -162,7 +169,6 @@ $(function() {
     for (let meme of memes) {
       $("#rep").append($('<option value="' + meme.id + '">' + meme.title + '</option>')); }}
 
-
   function questLayout(){
     refreshPage();
     $("#content")
@@ -184,7 +190,8 @@ $(function() {
         )
         .append($('<div class="col-12 text-center">')
           .append($('<h1>Commencer un quizz !</h1>'))
-          .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>').on("click", questLayout))
+          //TODO change onclick to questLayout
+          .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>').on("click", getQuestions))
         )
       )
   }
