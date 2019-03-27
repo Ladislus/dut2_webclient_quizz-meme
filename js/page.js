@@ -201,14 +201,12 @@ $(function() {
     $("#content")
       .append($('<div class="row mx-auto h-100">')
         .append($('<div class="col-12 text-center">')
-          .append($('<h1>Question </h1>')
-            .append(score + 1))
-          .append('<div id="quizz_question">')
+          .append($('<h1>Question ' + (score + 1) + '</h1>'))
+          .append($('<div id="quizz_question">'))
+          .append($('<div id="quizz_answer">'))
+          .append($('<p>Score ' + score + '</p>'))
+          .append($('<button type="button" id="validation">Validate !</button>').on("click", question, validate))
         )
-          .append('<div id="quizz_answer">')
-        .append($('<p>Score </p>')
-            .append(score))
-        .append('<button type="button" id="validation">Validate !</button>').on("click", validate)
       )
     $("#quizz_answer")
       .append(question.entitled);
@@ -370,10 +368,21 @@ $(function() {
       questLayout(qu);
     }
 
-    function validate(question) {
-      if (question.tyoex)
-      score+=1
-      let qu = questAleat();
-      layout_newQuestion(qu);
+    function validate(event) {
+      if (event.data.type == "string_qu" && $("#answer").val() == event.data.id_rep){
+        score+=1;
+        let qu = questAleat();
+        layout_newQuestion(qu);
+      }
+      else{
+        if (event.data.type == "img_qu"){
+          let qu = questAleat();
+          layout_newQuestion(qu)
+        }
+        else{
+          /* La défaite */
+          console.log("PERDU");
+        }
+      }
     }
 });
