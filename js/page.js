@@ -1,5 +1,5 @@
 $(function() {
-  let global_question = [new Question("string_qu", "Quelle est la race de chien du meme Doge ?", "Shiba Inu")];
+  let global_question = [];
   let asked_question = [];
   let score = 0;
 
@@ -23,14 +23,19 @@ $(function() {
     $("#content").empty(); }
 
   function getQuestions() {
+    console.log("1");
     fetch("http://localhost:3000/questions/")
     .then(response => {
       if (response.ok) return response.json();
       else throw new Error("ERROR : Fetching questions (" + response.status + ")"); })
-      .then(var_question); }
+      .then(var_question)
+      .then(questAleat);
+    }
 
   function var_question(questions) {
-    global_questions = questions; }
+    global_question = questions;
+    console.log("2");
+  }
 
   function getMemes() {
     fetch("http://localhost:3000/memes/")
@@ -129,14 +134,10 @@ $(function() {
           .append($('<div class="col-lg-6 col-sm-12 p-1">')
             .append($('<select class="form-control" id="type"><option value="string_qu">Text Question</option><option value="img_qu">Image Question</option><select>')
               .on("change", function() {
-                console.log("CLEANING");
                 $("#answer").empty();
-                console.log("CLEANED");
                 if ($("#type").val() == "string_qu") {
-                  console.log("STRING QUESTION");
                   $("#answer").append($('<input class="form-control" type="text" id="rep" value="" placeholder="Response" required>')); }
                 else {
-                  console.log("IMAGE QUESTION");
                   $("#answer").append($('<select class="form-control" id="rep" value="" required>'));
                   allMemes(); }})
               )
@@ -166,22 +167,34 @@ $(function() {
       .then(optionMemes); }
 
   function optionMemes(memes) {
-    console.log("OPTION MEMES !");
     for (let meme of memes) {
       $("#rep").append($('<option value="' + meme.id + '">' + meme.title + '</option>')); }}
 
-  function questLayout(){
+  function questLayout(question){
     refreshPage();
     $("#content")
       .append($('<div class="row mx-auto h-100">')
         .append($('<div class="col-12 text-center">')
-          .append($('<h1>Question</h1>'))
+          .append($('<h1>Question </h1>')
+            .append(score + 1))
+          .append('<div id="quizz_question">')
         )
-        .append()
+          .append('<div id="quizz_answer">')
         .append($('<p>Score </p>')
-          .append('<p id="score" value=score></p>')
-          .append('<button type="button" id="validation">Validate !</button>').on("click", validate)
-      ))
+            .append(score))
+        .append('<button type="button" id="validation">Validate !</button>').on("click", validate)
+      )
+    $("#quizz_answer")
+      .append(question.entitled);
+    if (question.type == "string_qu"){
+      $("#quizz_answer")
+        .append('<input type="text" id="answer">')
+    }
+    else{
+      $("#quizz_answer")
+        .append('<input type="image" id="answer" value="ok."></input>')
+    }
+
   }
 
   function quizz() {
@@ -193,16 +206,14 @@ $(function() {
         )
         .append($('<div class="col-12 text-center">')
           .append($('<h1>Commencer un quizz !</h1>'))
-          //TODO change onclick to questLayout
           .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>').on("click", getQuestions))
         )
       )
   }
 
-  function layout_newQuestion() {
-    refreshPage();
-    $("#content")
-      .append()
+  function layout_newQuestion(question) {
+    console.log("ououc");
+    console.log(question);
   }
 
   function adderQuestion() {
@@ -298,16 +309,21 @@ $(function() {
 
 
     function questAleat(){
-      let qu = global_question[Math.random()*global_question.length];
+      console.log("3");
+      console.log(global_question);
+      let qu = global_question[parseInt(Math.random()*global_question.length)];
+      console.log(qu);
       while ( qu in asked_question){
         qu = global_question[Math.random()*global_question.length];
       }
       asked_question.push(qu);
-      return qu;
+      questLayout(qu);
     }
 
-    function validate() {
-      $("#score").val(parseInt($("#score").val())+1);
-      layout_newQuestion(questAleat());
+    function validate(question) {
+      if (question.tyoex)
+      score+=1
+      let qu = questAleat();
+      layout_newQuestion(qu);
     }
 });
