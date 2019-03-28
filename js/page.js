@@ -233,7 +233,7 @@ $(function() {
     the3memes.sort(function(a, b){ return 0.5 - Math.random() });
     for (let current_meme of the3memes) {
       $("#quizz_answer")
-      .append($('<img src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
+      .append($('<img class="col-lg-6 col-sm-12" src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
   }}
 
   function quizz() {
