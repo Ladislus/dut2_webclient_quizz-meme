@@ -22,10 +22,10 @@
       "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/007/bd6.jpg"
     },
     {
-      "title": "xbox",
-      "description": "xbox",
+      "title": "Charlie Bit My Finger",
+      "description": "Charlie Bit Me, also known as \"Charlie bit my finger\", is a homemade movie of a playful interaction between two British brothers that ends with an adorable quote by the three-year-old Harry, who goes on to say \"Charlie bit me. And that really hurt\" after getting his finger bitten by his one-year-old toddler brother on camera. Upon entering online circulation in May 2007, the video quickly went viral spawned a large collection of remix and parody videos on YouTube.",
       "year": "2019-02-27",
-      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/013/106/xbox1.jpg",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/131/tdy_or_charlie_150501.today-inline-vid-featured-desktop.jpg",
       "id": 4
     },
     {
@@ -48,6 +48,41 @@
       "year": "2008-09-19",
       "img_link": "https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg",
       "id": 7
+    },
+    {
+      "title": "It's Over 9000!",
+      "description": "\"Over 9000\" is a popular catchphrase based on an awkwardly translated quote from the Japanese manga anime series Dragon Ball Z that is typically used as an innumerable quantifier to describe a large number of something like \"several\", \"lots\", \"butt loads\" and even the metric \"ass tonne\".",
+      "year": "2006-11-21",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/056/itsover1000.jpg",
+      "id": 8
+    },
+    {
+      "title": "Numa Numa",
+      "description": "Numa Numa is a video created by New Jersey amateur videographer Gary Brolsma, in which he performs a lip dub of the song \"Dragostea din tei\" by the Moldovan pop group O-Zone. Since its online debut on Newgrounds in December of 2004, the video has gained significant fame both online and offline for its parodies and re-enactment videos.",
+      "year": "2005-02-23",
+      "img_link": "https://i.kym-cdn.com/entries/icons/square/000/000/070/Picture_61.png",
+      "id": 9
+    },
+    {
+      "title": "Shoop Da Whoop",
+      "description": "Shoop da Whoop, also known as I'M A' FIRIN' MAH LAZER!! shows a blackface mouth and eyes suddenly (and frequently without warning) shooting a powerful stream of laser.",
+      "year": "2007-01-29",
+      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/175/722/IMMA_FIRIN_MA_LAZER_by_ToaJahli.jpg?1316406167",
+      "id": 10
+    },
+    {
+      "title": "Wombo Combo",
+      "description": "\"Wombo Combo\" is a memorable quote derived from a viral video showcasing a Super Smash Bros. Melee match in which a man can be heard loudly celebrating the execution of a winning combo. The phrase has since been used to describe impressive combination moves in a variety of other video games and audio from the match is often dubbed in various parody and remix videos.",
+      "year": "2009-03-30",
+      "img_link": "https://i.kym-cdn.com/entries/icons/mobile/000/000/078/wombocombo.jpg",
+      "id": 11
+    },
+    {
+      "title": "What is Love?",
+      "description": "\"What is Love\" is a 1993 dance pop song by the Trinidanian eurodance artist Haddaway, which saw a resurgence in popularity when it was featured in the \"Roxbury Guys\" sketches on TV show Saturday Night Live in 1996. In 2005, a scene from the show in which several characters are shown bobbing their heads in unison to \"What is Love\" was uploaded as a GIF to YTMND, which inspired a fad on the community website.",
+      "year": "2005-06-23",
+      "img_link": "https://i.kym-cdn.com/photos/images/newsfeed/000/460/314/28d.gif",
+      "id": 12
     }
   ],
   "players": [
@@ -76,16 +111,64 @@
       "id_rep": "Shiba Inu"
     },
     {
-      "type": "img_qu",
-      "entitled": "Quel est la marque concurente de Sony ?",
-      "id_rep": "4",
+      "type": "string_qu",
+      "entitled": "Quel est le nom du bébé qui mort le doigt ?",
+      "id_rep": "Charlie",
       "id": 2
     },
     {
       "type": "img_qu",
-      "entitled": "Quel est la marque concurente de Sony ?",
-      "id_rep": "4",
+      "entitled": "Quel extrait est issu du jeu Super Smash Bros ?",
+      "id_rep": "11",
       "id": 3
+    },
+    {
+      "type": "string_qu",
+      "entitled": "Dans le meme \"What is Love?\", comment s'appele l'homme à l'arrière de la voiture ?",
+      "id_rep": "Jim Carrey",
+      "id": 4
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Trouver le meme issu de Dragon Ball",
+      "id_rep": "8",
+      "id": 5
+    },
+    {
+      "type": "string_qu",
+      "entitled": "Quelle est la nationalité du groupe O-Zone ?",
+      "id_rep": "Moldave",
+      "id": 6
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Dans quel meme trouve-t-on Rick Astley ?",
+      "id_rep": "3",
+      "id": 7
+    },
+    {
+      "type": "string_qu",
+      "entitled": "Dans le meme \"Leekspin\", que tient la femme dans sa main ?",
+      "id_rep": "Poireau",
+      "id": 8
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Trouver le meme comportant une erreur de traduction",
+      "id_rep": "5",
+      "id": 9
+    },
+    {
+      "type": "string_qu",
+      "entitled": "Compléter la phrase suivante : \"Don't feed the ...\"",
+      "id_rep": "Troll",
+      "id": 10
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Quel meme est souvent accompagné de la musique \"I am Glad, 'cause I'm Finally Returning Back Home\" ?",
+      "id_rep": "7",
+      "id": 11
     }
   ]
 }
