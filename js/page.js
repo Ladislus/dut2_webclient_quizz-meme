@@ -199,7 +199,7 @@ $(function() {
     refreshPage();
     $("#content")
       .append($('<div class="row mx-auto h-100">')
-        .append($('<div class="col-12 text-center">')
+        .append($('<div class="col-12 text-center" id="center_div">')
           .append($('<h1>Question ' + (score + 1) + '</h1>'))
           .append($('<div id="quizz_question">'))
           .append($('<div id="quizz_answer">'))
@@ -209,7 +209,7 @@ $(function() {
     $("#quizz_answer")
       .append(question.entitled);
     if (question.type == "string_qu"){
-      $("#content")
+      $("#center_div")
         .append($('<button type="button" id="validation">Validate !</button>').on("click", question, validateStr))
       $("#quizz_answer")
         .append('<input type="text" id="answer">')
@@ -232,7 +232,7 @@ $(function() {
 
   function addImage(meme){
     $("#quizz_answer")
-      .append($('<img src=' + meme.img_link + ' alt="" id="#answer">').on("click", global_meme_question, meme, validateImg))
+      .append($('<img src=' + meme.img_link + ' alt="" id="#answer">').on("click", meme, validateImg))
   }
 
   function quizz() {
@@ -381,8 +381,10 @@ $(function() {
       }
     }
 
-    function validateImg(event, meme){
-      if (meme.data.id == event.data.id_rep){
+    function validateImg(meme){
+      console.log(meme);
+      console.log(event);
+      if (meme.data.id == global_meme_question.id_rep){
         score+=1;
         let qu = questAleat();
       }
