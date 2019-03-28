@@ -1,6 +1,8 @@
 $(function() {
-
-  let global_questions = new Array();
+  let global_question = [];
+  let asked_question = [];
+  let global_meme_question;
+  let score = 0;
 
   function Meme(title, description, year, img_link, id) {
     this.title = title;
@@ -26,10 +28,13 @@ $(function() {
     .then(response => {
       if (response.ok) return response.json();
       else throw new Error("ERROR : Fetching questions (" + response.status + ")"); })
-      .then(var_question); }
+      .then(var_question)
+      .then(questAleat);
+    }
 
   function var_question(questions) {
-    global_questions = questions; }
+    global_question = questions;
+  }
 
   function getMemes(page) {
     fetch("http://localhost:3000/memes/")
@@ -154,14 +159,10 @@ $(function() {
           .append($('<div class="col-lg-6 col-sm-12 p-1">')
             .append($('<select class="form-control" id="type"><option value="string_qu">Text Question</option><option value="img_qu">Image Question</option><select>')
               .on("change", function() {
-                console.log("CLEANING");
                 $("#answer").empty();
-                console.log("CLEANED");
                 if ($("#type").val() == "string_qu") {
-                  console.log("STRING QUESTION");
                   $("#answer").append($('<input class="form-control" type="text" id="rep" value="" placeholder="Response" required>')); }
                 else {
-                  console.log("IMAGE QUESTION");
                   $("#answer").append($('<select class="form-control" id="rep" value="" required>'));
                   allMemes(); }})
               )
@@ -191,20 +192,47 @@ $(function() {
       .then(optionMemes); }
 
   function optionMemes(memes) {
-    console.log("OPTION MEMES !");
     for (let meme of memes) {
       $("#rep").append($('<option value="' + meme.id + '">' + meme.title + '</option>')); }}
 
-  function questLayout(){
+  function questLayout(question){
     refreshPage();
     $("#content")
       .append($('<div class="row mx-auto h-100">')
-        .append($('<div class="col-12 text-center">')
-          .append($('<h1>Question</h1>'))
+        .append($('<div class="col-12 text-center" id="center_div">')
+          .append($('<h1>Question ' + (score + 1) + '</h1>'))
+          .append($('<div id="quizz_question">'))
+          .append($('<div id="quizz_answer">'))
+          .append($('<p>Score ' + score + '</p>'))
         )
-        .append($('<p>Score </p>')
-          .append('<input type="number" id="score" value="0" disabled>'))
       )
+    $("#quizz_answer")
+      .append(question.entitled);
+    if (question.type == "string_qu"){
+      $("#center_div")
+        .append($('<button type="button" id="validation">Validate !</button>').on("click", question, validateStr))
+      $("#quizz_answer")
+        .append('<input type="text" id="answer">')
+    }
+    else{
+      getImageFromId(question);
+    }
+
+  }
+
+  function getImageFromId(question){
+    global_meme_question = question;
+    fetch("http://localhost:3000/memes/"+question.id_rep)
+    .then(response => {
+      if (response.ok) {
+        return response.json(); }
+        else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); })
+      .then(addImage);
+    }
+
+  function addImage(meme){
+    $("#quizz_answer")
+      .append($('<img src=' + meme.img_link + ' alt="" id="#answer">').on("click", meme, validateImg))
   }
 
   function quizz() {
@@ -216,7 +244,6 @@ $(function() {
         )
         .append($('<div class="col-12 text-center">')
           .append($('<h1>Commencer un quizz !</h1>'))
-          //TODO change onclick to questLayout
           .append($('<button type="button" id="propose" class="btn btn-secondary">Répondre à une question</button>').on("click", getQuestions))
         )
       )
@@ -229,7 +256,6 @@ $(function() {
       $("#entitled").val(),
       $("#rep").val(),
     );
-      console.log(JSON.stringify(qu));
 
       $.ajax({
           url: "http://localhost:3000/questions",
@@ -251,7 +277,6 @@ $(function() {
       $("#dateMeme").val(),
       $("#urlMeme").val()
     );
-      console.log(JSON.stringify(meme));
 
       $.ajax({
           url: "http://localhost:3000/memes",
@@ -267,15 +292,21 @@ $(function() {
 
   function modify(){
 
-    let meme = new Meme(
+    let meme = new M
+    var qu = new Question(
+      $("#type").val(),
+      $("#entitled").val(),
+      $("#rep").val(),
+    );
+
+      $.ajax(eme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
       $("#dateMeme").val(),
       $("#urlMeme").val(),
       $("#idMeme").val()
-    );
+    ));
 
-      console.log(JSON.stringify(meme));
 
       $.ajax({
           url: "http://localhost:3000/memes/"+meme.id,
@@ -330,10 +361,36 @@ $(function() {
   getMemes(1);
 
 
-    function validate() {
-      if ($("#")){
-        $("#score").val() += 1;
+    function questAleat(){
+      let qu = global_question[parseInt(Math.random()*global_question.length)];
+      while ( qu in asked_question){
+        qu = global_question[Math.random()*global_question.length];
       }
-      layout_newQuestion();
+      asked_question.push(qu);
+      questLayout(qu);
+    }
+
+    function validateStr(event) {
+      if ($("#answer").val() == event.data.id_rep){
+        score+=1;
+        let qu = questAleat();
+      }
+      else{
+          /* La défaite */
+        console.log("PERDU");
+      }
+    }
+
+    function validateImg(meme){
+      console.log(meme);
+      console.log(event);
+      if (meme.data.id == global_meme_question.id_rep){
+        score+=1;
+        let qu = questAleat();
+      }
+      else{
+          /* La défaite */
+        console.log("PERDU");
+      }
     }
 });
