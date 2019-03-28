@@ -77,21 +77,15 @@
     },
     {
       "type": "img_qu",
-      "entitled": "azezaeaze",
-      "id_rep": "zaezaezae",
+      "entitled": "Quel est la marque concurente de Sony ?",
+      "id_rep": "4",
       "id": 2
-    },
-    {
-      "type": "string_qu",
-      "entitled": "qsdfqsdf",
-      "id_rep": "zaezaezae",
-      "id": 3
     },
     {
       "type": "img_qu",
       "entitled": "Quel est la marque concurente de Sony ?",
       "id_rep": "4",
-      "id": 4
+      "id": 3
     }
   ]
 }

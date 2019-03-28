@@ -1,6 +1,7 @@
 $(function() {
   let global_question = [];
   let asked_question = [];
+  let global_meme_question;
   let score = 0;
 
   function Meme(title, description, year, img_link, id) {
@@ -23,7 +24,6 @@ $(function() {
     $("#content").empty(); }
 
   function getQuestions() {
-    console.log("1");
     fetch("http://localhost:3000/questions/")
     .then(response => {
       if (response.ok) return response.json();
@@ -34,7 +34,6 @@ $(function() {
 
   function var_question(questions) {
     global_question = questions;
-    console.log("2");
   }
 
   function getMemes(page) {
@@ -205,20 +204,35 @@ $(function() {
           .append($('<div id="quizz_question">'))
           .append($('<div id="quizz_answer">'))
           .append($('<p>Score ' + score + '</p>'))
-          .append($('<button type="button" id="validation">Validate !</button>').on("click", question, validate))
         )
       )
     $("#quizz_answer")
       .append(question.entitled);
     if (question.type == "string_qu"){
+      $("#content")
+        .append($('<button type="button" id="validation">Validate !</button>').on("click", question, validateStr))
       $("#quizz_answer")
         .append('<input type="text" id="answer">')
     }
     else{
-      $("#quizz_answer")
-        .append('<input type="image" id="answer" value="ok."></input>')
+      getImageFromId(question);
     }
 
+  }
+
+  function getImageFromId(question){
+    global_meme_question = question;
+    fetch("http://localhost:3000/memes/"+question.id_rep)
+    .then(response => {
+      if (response.ok) {
+        return response.json(); }
+        else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); })
+      .then(addImage);
+    }
+
+  function addImage(meme){
+    $("#quizz_answer")
+      .append($('<img src=' + meme.img_link + ' alt="" id="#answer">').on("click", global_meme_question, meme, validateImg))
   }
 
   function quizz() {
@@ -235,11 +249,6 @@ $(function() {
       )
   }
 
-  function layout_newQuestion(question) {
-    console.log("ououc");
-    console.log(question);
-  }
-
   function adderQuestion() {
 
     var qu = new Question(
@@ -247,7 +256,6 @@ $(function() {
       $("#entitled").val(),
       $("#rep").val(),
     );
-      console.log(JSON.stringify(qu));
 
       $.ajax({
           url: "http://localhost:3000/questions",
@@ -269,7 +277,6 @@ $(function() {
       $("#dateMeme").val(),
       $("#urlMeme").val()
     );
-      console.log(JSON.stringify(meme));
 
       $.ajax({
           url: "http://localhost:3000/memes",
@@ -291,7 +298,6 @@ $(function() {
       $("#entitled").val(),
       $("#rep").val(),
     );
-      console.log(JSON.stringify(qu));
 
       $.ajax(eme(
       $("#nameMeme").val(),
@@ -301,7 +307,6 @@ $(function() {
       $("#idMeme").val()
     ));
 
-      console.log(JSON.stringify(meme));
 
       $.ajax({
           url: "http://localhost:3000/memes/"+meme.id,
@@ -357,10 +362,7 @@ $(function() {
 
 
     function questAleat(){
-      console.log("3");
-      console.log(global_question);
       let qu = global_question[parseInt(Math.random()*global_question.length)];
-      console.log(qu);
       while ( qu in asked_question){
         qu = global_question[Math.random()*global_question.length];
       }
@@ -368,21 +370,25 @@ $(function() {
       questLayout(qu);
     }
 
-    function validate(event) {
-      if (event.data.type == "string_qu" && $("#answer").val() == event.data.id_rep){
+    function validateStr(event) {
+      if ($("#answer").val() == event.data.id_rep){
         score+=1;
         let qu = questAleat();
-        layout_newQuestion(qu);
       }
       else{
-        if (event.data.type == "img_qu"){
-          let qu = questAleat();
-          layout_newQuestion(qu)
-        }
-        else{
           /* La défaite */
-          console.log("PERDU");
-        }
+        console.log("PERDU");
+      }
+    }
+
+    function validateImg(event, meme){
+      if (meme.data.id == event.data.id_rep){
+        score+=1;
+        let qu = questAleat();
+      }
+      else{
+          /* La défaite */
+        console.log("PERDU");
       }
     }
 });
