@@ -187,7 +187,7 @@ $(function() {
         .append($('<p class="col-12">Score ' + score + '</p>'))
       )
     $("#quizz_question")
-      .append(question.entitled);
+      .append($('<h4>' + question.entitled + '</h4>'));
     if (question.type == "string_qu"){
       $("#quizz_answer")
         .append($('<input class="form-control" type="text" id="answer">'))
@@ -233,7 +233,7 @@ $(function() {
     the3memes.sort(function(a, b){ return 0.5 - Math.random() });
     for (let current_meme of the3memes) {
       $("#quizz_answer")
-      .append($('<img class="col-lg-6 col-sm-12" src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
+      .append($('<img class="col-lg-6 col-sm-12 p-2 w-50" src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
   }}
 
   function quizz() {
