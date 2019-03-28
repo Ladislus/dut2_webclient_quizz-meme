@@ -184,7 +184,7 @@ $(function() {
         .append($('<h1 class="col-12">Question ' + (score + 1) + '</h1>'))
         .append($('<div class="col-12" id="quizz_question">'))
         .append($('<div class="col-12 justify-content-center" id="quizz_answer">'))
-        .append($('<p class="col-12">Score ' + score + '</p>'))
+        .append($('<p class="col-12">Score : ' + score + '</p>'))
       )
     $("#quizz_question")
       .append($('<h4>' + question.entitled + '</h4>'));
@@ -292,34 +292,25 @@ $(function() {
         }
 
   function modify(){
-
-    let meme = new M
-    var qu = new Question(
-      $("#type").val(),
-      $("#entitled").val(),
-      $("#rep").val(),
-    );
-
-      $.ajax(eme(
+    let meme = new Meme(
       $("#nameMeme").val(),
       $("#descMeme").val(),
       $("#dateMeme").val(),
       $("#urlMeme").val(),
       $("#idMeme").val()
-    ));
+    );
 
-
-      $.ajax({
-          url: "http://localhost:3000/memes/"+meme.id,
-          type: "PUT",
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify(meme),
-          success: function(msg) {
-            alert("Meme sauvegardé !");
-            getMemes(1); },
-          error: function(req, status, err) { alert("ERROR"); }});
-        }
+    $.ajax({
+        url: "http://localhost:3000/memes/"+meme.id,
+        type: "PUT",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(meme),
+        success: function(msg) {
+          alert("Meme sauvegardé !");
+          getMemes(1); },
+        error: function(req, status, err) { alert("ERROR"); }});
+      }
 
     function suppr(meme){
 
