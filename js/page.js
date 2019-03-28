@@ -76,26 +76,6 @@ $(function() {
 
   }
 
-  function fillListe(memes){
-    for(let meme of memes) {
-      $("#cardDeck")
-        .append($('<div class="carte col-lg-4 col-sm-6 p-2">')
-          .append($('<div class="card m-3 h-100">')
-            .append($('<div class="m-2 img-container d-flex align-items-center">')
-              .append($('<img class="card-img-top mx-auto" src="' + meme.img_link + '" alt="Card image cap">'))
-            )
-            .append($('<div class="card-body">')
-              .append($('<h5 class="card-title">' + meme.title + '</h5>'))
-              .append($('<p id="desc" class="card-text">' + meme.description + '</p>'))
-              .append($('<p class="card-text">' + meme.year + '</p>'))
-              .append($('<button class="btn btn-primary">Modify</button>').on("click", meme, details))
-              .append($('<button class="btn btn-danger float-right">Delete</button>').on("click", meme, supprMeme))
-            )
-          )
-        );
-    }
-  }
-
   function details(event){
       memeLayout();
       fillFormMeme(event.data);
@@ -200,21 +180,18 @@ $(function() {
   function questLayout(question){
     refreshPage();
     $("#content")
-      .append($('<div class="row mx-auto h-100">')
-        .append($('<div class="col-12 text-center" id="center_div">')
-          .append($('<h1>Question ' + (score + 1) + '</h1>'))
-          .append($('<div id="quizz_question">'))
-          .append($('<div id="quizz_answer">'))
-          .append($('<p>Score ' + score + '</p>'))
-        )
+      .append($('<div class="row mx-auto h-100 text-center" id="center_div">')
+        .append($('<h1 class="col-12">Question ' + (score + 1) + '</h1>'))
+        .append($('<div class="col-12" id="quizz_question">'))
+        .append($('<div class="col-12 justify-content-center" id="quizz_answer">'))
+        .append($('<p class="col-12">Score ' + score + '</p>'))
       )
-    $("#quizz_answer")
-      .append(question.entitled);
+    $("#quizz_question")
+      .append($('<h4>' + question.entitled + '</h4>'));
     if (question.type == "string_qu"){
-      $("#center_div")
-        .append($('<button type="button" id="validation">Validate !</button>').on("click", question, validateStr))
       $("#quizz_answer")
-        .append('<input type="text" id="answer">')
+        .append($('<input class="form-control" type="text" id="answer">'))
+        .append($('<button class="btn btn-secondary col-lg-4 col-sm-6" id="validation">Validate !</button>').on("click", question, validateStr))
     }
     else{
       getImageFromId(question);
@@ -256,7 +233,7 @@ $(function() {
     the3memes.sort(function(a, b){ return 0.5 - Math.random() });
     for (let current_meme of the3memes) {
       $("#quizz_answer")
-      .append($('<img src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
+      .append($('<img class="col-lg-6 col-sm-12 p-2 w-50" src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
   }}
 
   function quizz() {
