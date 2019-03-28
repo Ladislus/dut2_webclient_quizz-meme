@@ -148,9 +148,27 @@
     },
     {
       "type": "string_qu",
-      "entitled": "Dans le meme \"Leekspin\", que tien la femme dans sa main ?",
+      "entitled": "Dans le meme \"Leekspin\", que tient la femme dans sa main ?",
       "id_rep": "Poireau",
       "id": 8
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Trouver le meme comportant une erreur de traduction",
+      "id_rep": "5",
+      "id": 9
+    },
+    {
+      "type": "string_qu",
+      "entitled": "Compléter la phrase suivante : \"Don't feed the ...\"",
+      "id_rep": "Troll",
+      "id": 10
+    },
+    {
+      "type": "img_qu",
+      "entitled": "Quel meme est souvent accompagné de la musique \"I am Glad, 'cause I'm Finally Returning Back Home\" ?",
+      "id_rep": "7",
+      "id": 11
     }
   ]
 }
