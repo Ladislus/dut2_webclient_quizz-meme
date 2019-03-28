@@ -2,6 +2,8 @@ $(function() {
   let global_question = [];
   let asked_question = [];
   let global_meme_question;
+  let global_answer_meme_final;
+  let the3memes = []
   let score = 0;
 
   function Meme(title, description, year, img_link, id) {
@@ -227,13 +229,35 @@ $(function() {
       if (response.ok) {
         return response.json(); }
         else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); })
-      .then(addImage);
+      .then(get3Aleat);
     }
 
-  function addImage(meme){
-    $("#quizz_answer")
-      .append($('<img src=' + meme.img_link + ' alt="" id="#answer">').on("click", meme, validateImg))
-  }
+  function get3Aleat(meme) {
+    the3memes = [];
+    global_answer_meme_final = meme;
+    the3memes.push(meme);
+    fetch("http://localhost:3000/memes/")
+    .then(response => {
+      if (response.ok) {
+        return response.json(); }
+        else throw new Error("ERROR ; Fetching memes (" + response.status + ")"); })
+      .then(memes => {
+
+        for (i = 0; i < 3; i++) {
+        let m = memes[parseInt(Math.random() * memes.length)];
+        while (m.id == meme.id) {
+          m = memes[parseInt(Math.random() * memes.length)]; }
+        the3memes.push(m); }})
+        .then(addImage); }
+
+  function addImage(){
+    console.log('ALL MEMES');
+    console.log(the3memes);
+    the3memes.sort(function(a, b){ return 0.5 - Math.random() });
+    for (let current_meme of the3memes) {
+      $("#quizz_answer")
+      .append($('<img src=' + current_meme.img_link + ' alt="" id="#answer">').on("click", current_meme, validateImg));
+  }}
 
   function quizz() {
     refreshPage();
@@ -382,9 +406,10 @@ $(function() {
     }
 
     function validateImg(meme){
-      console.log(meme);
-      console.log(event);
-      if (meme.data.id == global_meme_question.id_rep){
+      console.log("CLICKED MEME");
+      console.log(meme.data.id);
+      console.log(global_answer_meme_final.id);
+      if (meme.data.id == global_answer_meme_final.id){
         score+=1;
         let qu = questAleat();
       }
